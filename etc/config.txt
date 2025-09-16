@@ -4,6 +4,9 @@
 # see <https://github.com/basil00/Divert/wiki/WinDivert-Documentation#7-filter-language> for details
 
 # loopback packets can only be filtered using 'outbound'.
+all sending packets except discord and steam: outbound and ((udp and (udp.SrcPort < 50000 or udp.SrcPort > 65535) and (udp.SrcPort < 27015 or udp.SrcPort > 27050)) or (tcp and (tcp.SrcPort < 27015 or tcp.SrcPort > 27050)))
+all receiving packets except discord and steam: inbound and ((udp and (udp.SrcPort < 50000 or udp.SrcPort > 65535) and (udp.SrcPort < 27015 or udp.SrcPort > 27050)) or (tcp and (tcp.SrcPort < 27015 or tcp.SrcPort > 27050)))
+
 localhost ipv4 all: outbound and loopback
 localhost ipv4 tcp: tcp and outbound and loopback
 localhost ipv4 udp: udp and outbound and loopback
