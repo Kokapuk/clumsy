@@ -40,6 +40,9 @@ pub fn build(b: *std.build.Builder) void {
     }
 
     b.installFile("etc/config.txt", b.fmt("{s}/config.txt", .{prefix}));
+    b.installFile("etc/settings.cfg", b.fmt("{s}/settings.cfg", .{prefix}));
+    b.installFile("etc/enable.wav", b.fmt("{s}/enable.wav", .{prefix}));
+    b.installFile("etc/disable.wav", b.fmt("{s}/disable.wav", .{prefix}));
     if (conf == .Ship)
         b.installFile("LICENSE", b.fmt("{s}/License.txt", .{prefix}));
 
